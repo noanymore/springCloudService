@@ -1,0 +1,83 @@
+server:
+  port: 8000
+
+
+spring:
+  application:
+    name: gre
+  resources:
+    static-locations: classpath:/templates/
+
+
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=false&autoReconnect=true
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+  #  redis:
+  #    host: 127.0.0.1
+  #    password: redispassword
+  #    port: 6379
+  #    jedis:
+  #      pool:
+  #        min-idle: 0
+  #        max-active: 8
+  #        max-idle: 8
+  #    database: 0
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: HTML5
+
+  redis:
+    password: pass
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #ʵ��ɨ�裬���package�ö��Ż��߷ֺŷָ�
+  typeAliasesPackage: com.sqc95111.demologin.model.DTO
+  #  typeEnumsPackage: cnzsqh.supplychain.*.po.enums
+  global-config:
+    #ˢ��mapper ��������
+    db-config:
+      #��������  0:"���ݿ�ID����", 1:"�û�����ID",2:"ȫ��ΨһID (��������ΨһID)", 3:"ȫ��ΨһID UUID";
+      id-type: auto
+      #�ֶβ��� 0:"�����ж�",1:"�� NULL �ж�"),2:"�ǿ��ж�"
+      field-strategy: not_empty
+      #�շ��»���ת��
+      column-underline: true
+      #���ݿ��д�»���ת��
+      #capital-mode: true
+      #�߼�ɾ������
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: h2
+    refresh: true
+      #�Զ��������Խӿ�ʵ��
+      #meta-object-handler: com.baomidou.springboot.xxx
+    #�Զ���SQLע����
+    #sql-injector: com.baomidou.springboot.xxx
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+logging:
+  level:
+    root: info
+    com:
+      ibatis: trace
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.sqc95111.demologin.model.DTO

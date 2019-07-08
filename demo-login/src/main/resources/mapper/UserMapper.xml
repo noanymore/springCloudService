@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sqc95111.demologin.mapper.UserMapper">
+    <select id="selectUserByName" resultType="com.sqc95111.demologin.model.DTO.User">
+        select id,username,user_account,password,create_time,mail
+        from user
+        where username = #{username}
+    </select>
+</mapper>

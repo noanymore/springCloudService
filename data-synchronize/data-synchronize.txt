@@ -1,0 +1,13 @@
+定时任务
+Ribbon通过template调用服务
+实现负载均衡
+security和springcloud不能实现多服务统一配置
+新版本template调用问题解决方案:
+ @Bean
+    @LoadBalanced
+    RestOperations restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+    @Autowired
+    RestOperations restTemplate;

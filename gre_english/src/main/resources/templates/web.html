@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+
+ 
+window.onload = function () {
+
+    $.ajax({
+        type: "post",
+        data: {},
+        url: "/wordHome",
+        success: function (data) {
+            var a = document.getElementById("a")
+            //var lable = $("<label></lable>")
+            for (var i = 0; i < data.length; i++) {
+                var label = document.createElement("lable")
+                var checkbox = document.createElement("input")
+                checkbox.setAttribute('type', 'checkbox')
+                label.append(checkbox)
+                var span = document.createElement('span')
+                span.innerHTML = data[i]
+                label.append(span)
+                a.append(label)
+                var inp = document.createElement('input')
+                inp.setAttribute('type', 'text')
+                a.append(inp)
+                var br = document.createElement('br')
+                a.append(br)
+            }
+        },
+        dataType: "json"
+    });
+}
+
+
+function button_onclick(){
+    alert("这是调用对比函数");
+    $.ajax({
+        type: "post",
+        data: {},
+        url: "/translate",
+        success: function (data) {
+            var a = document.getElementById("a")
+            //var lable = $("<label></lable>")
+            for (var i = 0; i < data.length; i++) {
+                var label = document.createElement("lable")
+                var checkbox = document.createElement("input")
+                checkbox.setAttribute('type', 'checkbox')
+                label.append(checkbox)
+                var span = document.createElement('span')
+                span.innerHTML = data[i]
+                label.append(span)
+                a.append(label)
+                var inp = document.createElement('input')
+                inp.setAttribute('type', 'text')
+                a.append(inp)
+                var br = document.createElement('br')
+                a.append(br)
+            }
+        },
+        dataType: "json"
+    });
+}
+</script>
+</head>
+<body>
+
+<div id="a"></div>
+<button type="button" onclick="button_onclick()">对比</button>    <button type="button">提交</button>
+</body>
+</html>
